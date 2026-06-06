@@ -73,5 +73,14 @@
 </script>
 
 <script src="support.js"></script>
+
+<script>
+function goHomeSearch(){
+  const input = document.querySelector(".search-box input");
+  const q = input ? input.value : "";
+  location.href = "listings.html?q=" + encodeURIComponent(q);
+}
+document.querySelectorAll(".search-box button").forEach(b => b.onclick = goHomeSearch);
+</script>
 </body>
 </html>

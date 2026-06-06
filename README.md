@@ -57,3 +57,11 @@ Smart category fields:
 Category fields fix:
 - убраны дубли параметров в авто/недвижимости
 - теперь марка/модель и другие параметры выводятся только один раз из category-fields.js
+
+
+Final web pack:
+- search-filters.js + listings.html — фильтры поиска
+- seller.html/js — профиль продавца
+- reports.js — жалобы
+- robots.txt + sitemap.xml — SEO подготовка
+- analytics.js — заготовка аналитики
