@@ -7,6 +7,7 @@ const CITIES = ["Тбилиси","Батуми","Кутаиси","Рустави
 
 const CATEGORIES = [
   { ru:"Авто", ka:"ავტომობილები", az:"Avtomobillər", am:"Ավտոմեքենաներ", en:"Cars", icon:"🚗" },
+  { ru:"Автозапчасти", ka:"ავტონაწილები", az:"Avto ehtiyat hissələri", am:"Ավտոպահեստամասեր", en:"Auto Parts", icon:"🔧" },
   { ru:"Недвижимость", ka:"უძრავი ქონება", az:"Daşınmaz əmlak", am:"Անշարժ գույք", en:"Real Estate", icon:"🏠" },
   { ru:"Работа", ka:"სამუშაო", az:"İş", am:"Աշխատանք", en:"Jobs", icon:"💼" },
   { ru:"Услуги", ka:"სერვისები", az:"Xidmətlər", am:"Ծառայություններ", en:"Services", icon:"🛠" },

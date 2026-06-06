@@ -7,10 +7,19 @@ async function loadEditListing() {
   if (error || !data) { document.getElementById("editMessage").innerText = "Объявление не найдено"; return; }
   document.getElementById("listingTitle").value = data.title || "";
   document.getElementById("listingCategory").value = data.category || "";
+  if (typeof renderSmartCategoryFields === "function") renderSmartCategoryFields(data.category || "");
+  setTimeout(() => { if (data.parameters) { Object.entries(data.parameters).forEach(([k,v]) => { const el=document.getElementById(k); if(el) el.value=v; }); } }, 100);
   document.getElementById("listingPrice").value = data.price || "";
   document.getElementById("listingCurrency").value = data.currency || "GEL";
   document.getElementById("listingCity").value = data.city || "";
   document.getElementById("listingDescription").value = data.description || "";
+  if (typeof loadRegions === "function") { await loadRegions(); }
+  if (document.getElementById("listingRegion")) document.getElementById("listingRegion").value = data.region_id || "";
+  if (typeof loadMunicipalities === "function") { await loadMunicipalities(); }
+  if (document.getElementById("listingMunicipality")) document.getElementById("listingMunicipality").value = data.municipality_id || "";
+  if (typeof loadSettlements === "function") { await loadSettlements(); }
+  if (document.getElementById("listingSettlement")) document.getElementById("listingSettlement").value = data.settlement_id || "";
+  if (document.getElementById("listingAddress")) document.getElementById("listingAddress").value = data.address || "";
   document.getElementById("statsBox").innerHTML = `
     <b>${tr("stats")}</b>
     <p>Просмотры: ${data.views_count || 0}</p>
@@ -31,6 +40,11 @@ async function saveListingEdit() {
     currency: document.getElementById("listingCurrency").value,
     city: document.getElementById("listingCity").value,
     description: document.getElementById("listingDescription").value,
+    region_id: document.getElementById("listingRegion") ? (document.getElementById("listingRegion").value || null) : null,
+    municipality_id: document.getElementById("listingMunicipality") ? (document.getElementById("listingMunicipality").value || null) : null,
+    settlement_id: document.getElementById("listingSettlement") ? (document.getElementById("listingSettlement").value || null) : null,
+    address: document.getElementById("listingAddress") ? document.getElementById("listingAddress").value : "",
+    parameters: typeof collectSmartCategoryData === "function" ? collectSmartCategoryData() : {},
     updated_at: new Date().toISOString()
   }).eq("id", id);
   document.getElementById("editMessage").innerText = error ? error.message : "Сохранено ✅";

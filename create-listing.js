@@ -16,6 +16,7 @@ function renderCategoryFields() {
   sub.innerHTML = list.map(x => `<option value="${x}">${x}</option>`).join("");
 
   const box = document.getElementById("extraFields");
+  if (typeof renderSmartCategoryFields === "function") renderSmartCategoryFields(category);
 
   if (category === "Авто") {
     box.innerHTML = `
@@ -97,15 +98,20 @@ async function createListing() {
     price: Number(document.getElementById("listingPrice").value || 0),
     currency: document.getElementById("listingCurrency").value,
     city: document.getElementById("listingCity").value,
+    region_id: document.getElementById("listingRegion") ? (document.getElementById("listingRegion").value || null) : null,
+    municipality_id: document.getElementById("listingMunicipality") ? (document.getElementById("listingMunicipality").value || null) : null,
+    settlement_id: document.getElementById("listingSettlement") ? (document.getElementById("listingSettlement").value || null) : null,
+    address: document.getElementById("listingAddress") ? document.getElementById("listingAddress").value : "",
     description:
       description +
       "\nПодкатегория: " + document.getElementById("listingSubcategory").value +
-      collectExtraText() +
+      collectExtraText() + "\n" + (typeof smartDataToText === "function" ? smartDataToText(collectSmartCategoryData()) : "") +
       "\nТелефон: " + document.getElementById("listingPhone").value +
       "\nWhatsApp: " + document.getElementById("listingWhatsapp").value,
     company_id: document.getElementById("listingCompany") ? (document.getElementById("listingCompany").value || null) : null,
     seller_type: document.getElementById("listingCompany") && document.getElementById("listingCompany").value ? "company" : "private",
     created_by: currentUser.id,
+    parameters: typeof collectSmartCategoryData === "function" ? collectSmartCategoryData() : {},
     status: "active"
   };
 

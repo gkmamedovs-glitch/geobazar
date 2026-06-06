@@ -25,10 +25,16 @@
       <div class="field"><label>Цена</label><input id="listingPrice" type="number"></div>
       <div class="field"><label>Валюта</label><select id="listingCurrency"><option>GEL</option><option>USD</option><option>EUR</option></select></div>
       <div class="field"><label>Город</label><input id="listingCity"></div>
+      <div class="field"><label>Регион</label><select id="listingRegion" onchange="loadMunicipalities()"></select></div>
+      <div class="field"><label>Муниципалитет / район</label><select id="listingMunicipality" onchange="loadSettlements()"></select></div>
+      <div class="field"><label>Город / село</label><select id="listingSettlement"></select></div>
+      <div class="field"><label>Адрес</label><input id="listingAddress" placeholder="Улица, дом, ориентир"></div>
+
       <div class="field"><label>Телефон</label><input id="listingPhone"></div>
       <div class="field"><label>WhatsApp</label><input id="listingWhatsapp"></div>
       <div class="field full"><label>Фото объявления</label><input id="listingImages" type="file" accept="image/*" multiple></div>
       <div id="extraFields" class="form-grid full"></div>
+      <div id="smartCategoryFields" class="form-grid full"></div>
       <div class="field full"><label>Описание</label><textarea id="listingDescription"></textarea></div>
     </div>
     <div class="panel" style="background:#fff7ed;border:1px solid #fed7aa;margin:15px 0">
@@ -43,7 +49,7 @@
 
   <script>authModal();</script>
   <script>footer();</script>
-  <script src="profile.js"></script><script src="companies.js"></script><script src="create-listing.js"></script><script>initCreateListing(); loadMyCompanies("listingCompany");</script>
+  <script src="profile.js"></script><script src="companies.js"></script><script src="locations.js"></script><script src="category-fields.js"></script><script src="create-listing.js"></script><script>initCreateListing(); initLocationFields(); loadMyCompanies("listingCompany");</script>
 <script src="support.js"></script>
 </body>
 </html>

@@ -12,6 +12,12 @@
 <div class="field"><label data-i18n="price">Цена</label><input id="listingPrice" type="number"></div>
 <div class="field"><label>Валюта</label><select id="listingCurrency"><option>GEL</option><option>USD</option><option>EUR</option></select></div>
 <div class="field"><label data-i18n="city">Город</label><input id="listingCity"></div>
+
+<div class="field"><label>Регион</label><select id="listingRegion" onchange="loadMunicipalities()"></select></div>
+<div class="field"><label>Муниципалитет / район</label><select id="listingMunicipality" onchange="loadSettlements()"></select></div>
+<div class="field"><label>Город / село</label><select id="listingSettlement"></select></div>
+<div class="field"><label>Адрес</label><input id="listingAddress"></div>
+<div id="smartCategoryFields" class="form-grid full"></div>
 <div class="field full"><label data-i18n="description">Описание</label><textarea id="listingDescription"></textarea></div>
 </div>
 <button class="btn btn-blue" onclick="saveListingEdit()" data-i18n="save">Сохранить</button>
@@ -23,6 +29,6 @@
 <p id="editMessage" class="message"></p>
 <div id="statsBox" class="panel" style="margin-top:15px"></div>
 </section></main>
-<script>authModal();</script><script>footer();</script><script src="edit-listing.js"></script><script>loadEditListing();</script>
+<script>authModal();</script><script>footer();</script><script src="locations.js"></script><script src="category-fields.js"></script><script src="edit-listing.js"></script><script>loadEditListing();</script>
 <script src="support.js"></script>
 </body></html>

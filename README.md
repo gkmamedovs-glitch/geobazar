@@ -39,3 +39,16 @@ Logout fix:
 - auth.js fixed
 - ui.js fixed
 - logout.html added for emergency logout
+
+
+Locations final:
+- locations.js — выбор регион → муниципалитет → город/село
+- GEORGIA_LOCATIONS_STARTER.sql — стартовая база регионов/муниципалитетов/основных городов и сёл
+- locations_import_template.csv — шаблон для полной загрузки всех сёл
+- LOCATIONS_IMPORT_README.txt — инструкция импорта
+
+
+Smart category fields:
+- category-fields.js — умные поля по категориям
+- SMART_CATEGORY_FIELDS_SQL.sql — добавляет listings.parameters jsonb
+- create-listing/edit-listing сохраняют параметры в JSON
