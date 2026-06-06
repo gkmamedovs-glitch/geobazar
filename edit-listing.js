@@ -93,3 +93,23 @@ function renderCategoryFields() {
     smartBox.innerHTML = "";
   }
 }
+
+
+// Payment-aware promotion actions
+async function boostListing() {
+  const id = qs("id");
+  if (typeof buyBoost === "function") {
+    await buyBoost(id);
+  } else {
+    alert("Платежный модуль не загружен");
+  }
+}
+
+async function vipListing() {
+  const id = qs("id");
+  if (typeof buyVip === "function") {
+    await buyVip(id);
+  } else {
+    alert("Платежный модуль не загружен");
+  }
+}

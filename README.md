@@ -72,3 +72,10 @@ Admin + Reviews + Ratings pack:
 - admin-tools.js — логика админки
 - admin.html/admin-users/admin-companies/admin-listings/admin-reports/admin-verification
 - reviews.js/html обновлены: рейтинг, подсчёт отзывов
+
+
+Payment UI Pack:
+- PAYMENT_UI_SQL.sql — таблицы wallets/payments/subscriptions/invoices
+- payments.html — баланс и история платежей
+- payments.js — создание заявок на оплату
+- edit-listing интегрирован с VIP/Boost платежами

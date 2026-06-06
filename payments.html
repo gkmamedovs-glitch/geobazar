@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Платежи — GeoBazar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script><script src="i18n.js"></script><script src="ui.js"></script><script src="auth.js"></script>
+</head>
+<body>
+<script>header();</script>
+<main>
+  <section class="dashboard">
+    <div class="panel side-menu">
+      <a class="btn btn-light" href="dashboard.html">👤 Кабинет</a>
+      <a class="btn btn-light" href="payments.html">💳 Платежи</a>
+      <a class="btn btn-light" href="billing.html">📦 Пакеты</a>
+      <a class="btn btn-light" href="my-listings.html">📦 Мои объявления</a>
+      <button class="btn btn-danger" onclick="logoutUser()">🚪 Выйти</button>
+    </div>
+    <div class="panel">
+      <h1>💳 Платежи и баланс</h1>
+      <div class="card">
+        <h2 id="walletBalance">0 GEL</h2>
+        <p>Баланс аккаунта</p>
+        <button class="btn btn-blue" onclick="topUpWallet()">Пополнить баланс</button>
+      </div>
+
+      <h2>Пакеты</h2>
+      <div id="paymentPlans" class="grid-4">Загрузка...</div>
+
+      <h2>История операций</h2>
+      <div id="paymentsHistory" class="grid-2">Загрузка...</div>
+    </div>
+  </section>
+</main>
+<script>authModal();</script><script>footer();</script>
+<script src="payments.js"></script><script src="support.js"></script>
+<script>loadPaymentsDashboard();</script>
+</body>
+</html>
