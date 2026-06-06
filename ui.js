@@ -1,23 +1,6 @@
-const SUPABASE_URL="https://hexatytkkerqhtsukozp.supabase.co";
-const SUPABASE_KEY="sb_publishable_Rs28uZ0iGl0YLrJm8yfxoA_Ba2sRgHC";
-const supabaseClient=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-const CITIES=["Тбилиси","Батуми","Кутаиси","Рустави","Марнеули","Гори","Зугдиди","Телави","Поти","Кобулети"];
-const CATEGORIES=[
-{ru:"Авто",ka:"ავტომობილები",az:"Avtomobillər",am:"Ավտոմեքենաներ",en:"Cars",icon:"🚗",slug:"cars"},
-{ru:"Недвижимость",ka:"უძრავი ქონება",az:"Daşınmaz əmlak",am:"Անշարժ գույք",en:"Real Estate",icon:"🏠",slug:"real-estate"},
-{ru:"Работа",ka:"სამუშაო",az:"İş",am:"Աշխատանք",en:"Jobs",icon:"💼",slug:"jobs"},
-{ru:"Услуги",ka:"სერვისები",az:"Xidmətlər",am:"Ծառայություններ",en:"Services",icon:"🛠",slug:"services"},
-{ru:"Электроника",ka:"ელექტრონიკა",az:"Elektronika",am:"Էլեկտրոնիկա",en:"Electronics",icon:"📱",slug:"electronics"},
-{ru:"Строительство",ka:"მშენებლობა",az:"Tikinti",am:"Շինարարություն",en:"Construction",icon:"🏗",slug:"construction"},
-{ru:"Сельское хозяйство",ka:"სოფლის მეურნეობა",az:"Kənd təsərrüfatı",am:"Գյուղատնտեսություն",en:"Agriculture",icon:"🚜",slug:"agriculture"},
-{ru:"Животные",ka:"ცხოველები",az:"Heyvanlar",am:"Կենդանիներ",en:"Animals",icon:"🐾",slug:"animals"},
-{ru:"Туризм",ka:"ტურიზმი",az:"Turizm",am:"Զբոսաշրջություն",en:"Tourism",icon:"✈️",slug:"tourism"},
-{ru:"Грузоперевозки",ka:"ტვირთის გადაზიდვა",az:"Yük daşımaları",am:"Բեռնափոխադրումներ",en:"Cargo",icon:"🚚",slug:"cargo"},
-{ru:"Бизнес",ka:"ბიზნესი",az:"Biznes",am:"Բիզնես",en:"Business",icon:"🏢",slug:"business"}
-];
-const SUBCATEGORIES={"Авто":["Легковые","Внедорожники","Грузовые","Мото","Автобусы","Запчасти","Шины и диски","Автосервис"],"Недвижимость":["Продажа квартир","Аренда квартир","Дома","Коммерческая","Земля","Посуточная аренда"],"Работа":["Вакансии","Резюме","Подработка","Удалённая работа"],"Услуги":["Строительство","Ремонт","Электрик","Сантехник","Сварщик","Красота","Обучение","IT"],"Грузоперевозки":["По Грузии","Межгород","Международные","Грузовое такси","Курьер"],"Туризм":["Туры","Трансферы","Гиды","Отели","eSIM","Страховка"]};
-function getLang(){return localStorage.getItem("gb_lang")||"ru";}
-function catName(cat){return cat[getLang()]||cat.ru;}
-function setLang(lang){localStorage.setItem("gb_lang",lang);location.reload();}
-function qs(name){return new URLSearchParams(location.search).get(name);}
-function money(value,currency){return `${value||0} ${currency||"GEL"}`;}
+function header(){document.write(`<header class="topbar"><a class="logo" href="index.html"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></a><nav class="nav"><a class="hide-mobile" href="categories.html">Категории</a><a class="hide-mobile" href="listings.html">Объявления</a><a class="hide-mobile" href="cargo.html">GeoCargo</a><a class="hide-mobile" href="tourism.html">GeoTravel</a><select class="lang-select" onchange="setLang(this.value)"><option value="ru">RU</option><option value="ka">KA</option><option value="az">AZ</option><option value="am">AM</option><option value="en">EN</option></select><a class="btn btn-orange" href="create-listing.html">+ Подать объявление</a><span id="authNav"></span></nav></header>`);}
+function authModal(){document.write(`<div id="authModal" class="modal"><div class="modal-card"><h2 id="authTitle">Вход</h2><div class="field"><label>Email</label><input id="authEmail" type="email" placeholder="email@example.com"></div><div class="field"><label>Пароль</label><input id="authPassword" type="password" placeholder="Минимум 6 символов"></div><button class="btn btn-orange" style="width:100%" onclick="submitAuth()">Продолжить</button><button class="btn btn-light" style="width:100%;margin-top:10px" onclick="closeAuth()">Закрыть</button><p id="authMessage" class="message"></p><hr><button class="btn btn-light" style="width:100%;margin-top:8px" onclick="showProviderNote('Google')">Войти через Google</button><button class="btn btn-light" style="width:100%;margin-top:8px" onclick="showProviderNote('Apple')">Войти через Apple</button><button class="btn btn-light" style="width:100%;margin-top:8px" onclick="showProviderNote('Phone/SMS')">Войти по телефону / SMS</button><p style="color:#6b7280;font-size:13px">Google, Apple и SMS включаются отдельно в Supabase.</p></div></div>`);}
+function footer(){document.write(`<footer><div class="logo"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></div><p>© 2026 GeoBazar.ge — Вся Грузия в одном месте.</p><p>info@geobazar.ge · support@geobazar.ge</p></footer>`);}
+function renderCategoryGrid(elementId){const box=document.getElementById(elementId);if(!box)return;box.innerHTML=CATEGORIES.map(c=>`<a class="category-card" href="listings.html?category=${encodeURIComponent(c.ru)}">${c.icon}<span>${catName(c)}</span></a>`).join("");}
+function shareButtons(title,url=location.href){const u=encodeURIComponent(url);const t=encodeURIComponent(title);return `<div class="share-row"><a class="btn btn-light" target="_blank" href="https://wa.me/?text=${t}%20${u}">WhatsApp</a><a class="btn btn-light" target="_blank" href="https://t.me/share/url?url=${u}&text=${t}">Telegram</a><a class="btn btn-light" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${u}">Facebook</a><button class="btn btn-light" onclick="navigator.clipboard.writeText('${url}')">Скопировать</button></div>`;}
+function aiDescription(category,title){if(category==="Авто")return `Продаётся ${title}. Автомобиль в хорошем состоянии, документы в порядке. Возможен торг.`;if(category==="Недвижимость")return `${title}. Удобное расположение, рядом инфраструктура. Подробности по телефону.`;if(category==="Работа")return `Открыта вакансия: ${title}. Требуется ответственный сотрудник. Условия обсуждаются индивидуально.`;if(category==="Услуги")return `Предлагаем услугу: ${title}. Качественно, быстро и по договорённости.`;return `${title}. Подробное описание, состояние, условия продажи и контакты продавца. Возможен торг.`;}
