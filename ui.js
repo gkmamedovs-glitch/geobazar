@@ -1,24 +1,27 @@
 
 function header() {
+  const T = (key, fallback) => (typeof tr === "function" ? tr(key) : fallback);
+  const lang = (typeof getLang === "function" ? getLang() : "ru");
+
   document.write(`
     <header class="topbar">
       <a class="logo" href="index.html"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></a>
       <nav class="nav">
-        <a class="hide-mobile" href="categories.html">${tr("nav_categories")}</a>
-        <a class="hide-mobile" href="listings.html">${tr("nav_listings")}</a>
-        <a class="hide-mobile" href="cargo.html">${tr("nav_cargo")}</a>
-        <a class="hide-mobile" href="tourism.html">${tr("nav_travel")}</a>
-        <a class="hide-mobile" href="business.html">${tr("nav_business")}</a>
-        <a class="hide-mobile" href="verification.html">${tr("nav_verification")}</a>
-        <a class="hide-mobile" href="billing.html">${tr("nav_packages")}</a>
+        <a class="hide-mobile" href="categories.html">${T("nav_categories","Категории")}</a>
+        <a class="hide-mobile" href="listings.html">${T("nav_listings","Объявления")}</a>
+        <a class="hide-mobile" href="cargo.html">${T("nav_cargo","GeoCargo")}</a>
+        <a class="hide-mobile" href="tourism.html">${T("nav_travel","GeoTravel")}</a>
+        <a class="hide-mobile" href="business.html">${T("nav_business","Бизнес")}</a>
+        <a class="hide-mobile" href="verification.html">${T("nav_verification","Верификация")}</a>
+        <a class="hide-mobile" href="billing.html">${T("nav_packages","Пакеты")}</a>
         <select class="lang-select" onchange="setLang(this.value)">
-          <option value="ru" ${getLang()==="ru"?"selected":""}>RU</option>
-          <option value="ka" ${getLang()==="ka"?"selected":""}>KA</option>
-          <option value="az" ${getLang()==="az"?"selected":""}>AZ</option>
-          <option value="en" ${getLang()==="en"?"selected":""}>EN</option>
-          <option value="am" ${getLang()==="am"?"selected":""}>AM</option>
+          <option value="ru" ${lang==="ru"?"selected":""}>RU</option>
+          <option value="ka" ${lang==="ka"?"selected":""}>KA</option>
+          <option value="az" ${lang==="az"?"selected":""}>AZ</option>
+          <option value="en" ${lang==="en"?"selected":""}>EN</option>
+          <option value="am" ${lang==="am"?"selected":""}>AM</option>
         </select>
-        <a class="btn btn-orange" href="create-listing.html">${tr("nav_post")}</a>
+        <a class="btn btn-orange" href="create-listing.html">${T("nav_post","+ Подать объявление")}</a>
         <span id="authNav"></span>
       </nav>
     </header>

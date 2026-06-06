@@ -33,3 +33,9 @@ Dashboard + Support + Payments build:
 - support.js — плавающая кнопка поддержки
 - billing.js — подготовка платежей
 - SUPABASE_NEXT_SQL.sql — SQL для support_tickets и payment_transactions
+
+
+Logout fix:
+- auth.js fixed
+- ui.js fixed
+- logout.html added for emergency logout

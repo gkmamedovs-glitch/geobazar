@@ -13,32 +13,38 @@ function renderAuthNav() {
 
   if (currentUser) {
     navBox.innerHTML = `
-      <a class="btn btn-light" href="dashboard.html">👤 ${tr("cabinet")}</a>
-      <button class="btn btn-danger" onclick="logoutUser()">${tr("logout")}</button>
+      <a class="btn btn-light" href="dashboard.html">👤 ${typeof tr === "function" ? tr("cabinet") : "Кабинет"}</a>
+      <button class="btn btn-danger" onclick="logoutUser()">🚪 ${typeof tr === "function" ? tr("logout") : "Выйти"}</button>
     `;
   } else {
     navBox.innerHTML = `
-      <button class="btn btn-light" onclick="openAuth('login')">${tr("login")}</button>
-      <button class="btn btn-light" onclick="openAuth('register')">${tr("register")}</button>
+      <button class="btn btn-light" onclick="openAuth('login')">${typeof tr === "function" ? tr("login") : "Войти"}</button>
+      <button class="btn btn-light" onclick="openAuth('register')">${typeof tr === "function" ? tr("register") : "Регистрация"}</button>
     `;
   }
 }
 
 function openAuth(mode) {
   window.authMode = mode;
-  document.getElementById("authTitle").innerText = mode === "register" ? "${tr("register")}" : "Вход";
-  document.getElementById("authMessage").innerText = "";
-  document.getElementById("authModal").classList.add("show");
+  const title = document.getElementById("authTitle");
+  const msg = document.getElementById("authMessage");
+  const modal = document.getElementById("authModal");
+
+  if (title) title.innerText = mode === "register" ? (typeof tr === "function" ? tr("register") : "Регистрация") : (typeof tr === "function" ? tr("login") : "Вход");
+  if (msg) msg.innerText = "";
+  if (modal) modal.classList.add("show");
 }
 
 function closeAuth() {
-  document.getElementById("authModal").classList.remove("show");
+  const modal = document.getElementById("authModal");
+  if (modal) modal.classList.remove("show");
 }
 
 async function submitAuth() {
   const email = document.getElementById("authEmail").value.trim();
   const password = document.getElementById("authPassword").value;
   const msg = document.getElementById("authMessage");
+
   msg.className = "message";
 
   if (!email || !password) {
@@ -48,16 +54,17 @@ async function submitAuth() {
   }
 
   let result;
+
   if (window.authMode === "register") {
     result = await supabaseClient.auth.signUp({ email, password });
-    msg.innerText = result.error ? result.error.message : "${tr("register")} создана. Теперь войдите в аккаунт.";
+    msg.innerText = result.error ? result.error.message : "Регистрация создана. Теперь войдите в аккаунт.";
   } else {
     result = await supabaseClient.auth.signInWithPassword({ email, password });
     msg.innerText = result.error ? result.error.message : "Вы вошли.";
     if (!result.error) {
       closeAuth();
       await initAuth();
-      location.reload();
+      location.href = "dashboard.html";
     }
   }
 
@@ -65,12 +72,21 @@ async function submitAuth() {
 }
 
 async function logoutUser() {
-  await supabaseClient.auth.signOut();
+  try {
+    await supabaseClient.auth.signOut();
+  } catch (e) {
+    console.error(e);
+  }
+
+  localStorage.removeItem("sb-hexatytkkerqhtsukozp-auth-token");
+  sessionStorage.clear();
+
   location.href = "index.html";
 }
 
-function showProviderNote(provider) {
-  alert(provider + " вход подготовлен. Нужно включить провайдера в Supabase.");
+// Emergency logout from browser console: forceLogout()
+async function forceLogout() {
+  await logoutUser();
 }
 
 document.addEventListener("DOMContentLoaded", initAuth);
