@@ -1,5 +1,5 @@
-# GeoBazar Full Project
+# GeoBazar GitHub Pages Flat
 
-Загрузите все файлы и папки в GitHub репозиторий geobazar.
+Все файлы лежат в корне, без папок css/js. Это проще загрузить через GitHub.
 
-Важно: secret key Supabase не используется в коде. Его лучше перевыпустить в Supabase, так как он был отправлен в чат.
+Важно: secret key Supabase не используется.
