@@ -48,3 +48,24 @@ function qs(name) {
 function money(value, currency) {
   return `${value || 0} ${currency || "GEL"}`;
 }
+
+const COMPANY_TYPES = [
+  "Застройщик",
+  "Агентство недвижимости",
+  "Автодилер",
+  "Магазин",
+  "Производитель",
+  "Перевозчик",
+  "Турфирма",
+  "Сервисная компания",
+  "Другое"
+];
+
+const COMPANY_ROLES = [
+  "owner",
+  "admin",
+  "manager",
+  "sales",
+  "accountant",
+  "viewer"
+];

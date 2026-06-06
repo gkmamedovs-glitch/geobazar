@@ -17,6 +17,7 @@
   <section class="panel">
     <h1>Подать объявление</h1>
     <div class="form-grid">
+      <div class="field full"><label>Публиковать как</label><select id="listingCompany"></select></div>
       <div class="field full"><label>Категория</label><select id="listingCategory" onchange="renderCategoryFields()"></select></div>
       <div class="field full"><label>Подкатегория</label><select id="listingSubcategory"></select></div>
       <div class="field full"><label>Заголовок</label><input id="listingTitle" placeholder="Например: BMW 750 2014"></div>
@@ -41,6 +42,6 @@
 
   <script>authModal();</script>
   <script>footer();</script>
-  <script src="profile.js"></script><script src="create-listing.js"></script><script>initCreateListing();</script>
+  <script src="profile.js"></script><script src="companies.js"></script><script src="create-listing.js"></script><script>initCreateListing(); loadMyCompanies("listingCompany");</script>
 </body>
 </html>

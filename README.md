@@ -1,5 +1,12 @@
-# GeoBazar GitHub Pages Flat
+# GeoBazar Company Team Build
 
-Все файлы лежат в корне, без папок css/js. Это проще загрузить через GitHub.
+Добавлено:
+- business.html — кабинет компании
+- company.html — публичная страница компании
+- company-team.html — сотрудники и приглашения
+- billing.html — пакеты и счёт
+- companies.js — логика компаний
+- company-team.js — логика сотрудников
+- create-listing.html — выбор публикации от частного лица или компании
 
-Важно: secret key Supabase не используется.
+Загрузите все файлы в корень GitHub репозитория с заменой старых.

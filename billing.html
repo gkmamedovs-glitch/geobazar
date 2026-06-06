@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Счёт и пакеты — GeoBazar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="ui.js"></script>
+  <script src="auth.js"></script>
+</head>
+<body>
+<script>header();</script>
+<main>
+  <section class="panel">
+    <h1>Счёт и пакеты</h1>
+    <p>Платежи пока в режиме подготовки. Реальное подключение банка/эквайринга сделаем после юридической настройки.</p>
+    <div class="grid-4" id="plansBox">Загрузка...</div>
+  </section>
+</main>
+<script>authModal();</script>
+<script>footer();</script>
+<script>
+async function loadPlans(){
+  const { data, error } = await supabaseClient.from("plans").select("*").eq("active", true).order("price");
+  const box = document.getElementById("plansBox");
+  if(error){ box.innerHTML = error.message; return; }
+  box.innerHTML = (data || []).map(p => `
+    <div class="card">
+      <h2>${p.name}</h2>
+      <p><b>${p.price} ${p.currency}</b> / ${p.duration_days} дней</p>
+      <p>Объявлений: ${p.listing_limit}</p>
+      <p>VIP: ${p.vip_limit}</p>
+      <p>Поднятий: ${p.boost_limit}</p>
+      <button class="btn btn-orange" onclick="alert('Оплату подключим через банк/платёжный шлюз')">Выбрать пакет</button>
+    </div>
+  `).join("");
+}
+loadPlans();
+</script>
+</body>
+</html>

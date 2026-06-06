@@ -103,6 +103,9 @@ async function createListing() {
       collectExtraText() +
       "\nТелефон: " + document.getElementById("listingPhone").value +
       "\nWhatsApp: " + document.getElementById("listingWhatsapp").value,
+    company_id: document.getElementById("listingCompany") ? (document.getElementById("listingCompany").value || null) : null,
+    seller_type: document.getElementById("listingCompany") && document.getElementById("listingCompany").value ? "company" : "private",
+    created_by: currentUser.id,
     status: "active"
   };
 

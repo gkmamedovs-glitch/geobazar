@@ -7,7 +7,7 @@ function header() {
         <a class="hide-mobile" href="categories.html">Категории</a>
         <a class="hide-mobile" href="listings.html">Объявления</a>
         <a class="hide-mobile" href="cargo.html">GeoCargo</a>
-        <a class="hide-mobile" href="tourism.html">GeoTravel</a>
+        <a class="hide-mobile" href="tourism.html">GeoTravel</a><a class="hide-mobile" href="business.html">Бизнес</a><a class="hide-mobile" href="billing.html">Пакеты</a>
         <select class="lang-select" onchange="setLang(this.value)">
           <option value="ru">RU</option>
           <option value="ka">KA</option>
