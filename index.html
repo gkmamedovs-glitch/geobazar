@@ -336,6 +336,86 @@ async function saveProfile() {
 }
   checkUser();
 loadProfile();
+  async function createListing() {
+  const msg = document.getElementById("listingMessage");
+
+  const { data: userData } = await supabaseClient.auth.getUser();
+  const user = userData.user;
+
+  if (!user) {
+    msg.innerText = "Сначала войдите в аккаунт";
+    return;
+  }
+
+  const title = document.getElementById("listingTitle").value;
+  const category = document.getElementById("listingCategory").value;
+  const price = document.getElementById("listingPrice").value;
+  const currency = document.getElementById("listingCurrency").value;
+  const city = document.getElementById("listingCity").value;
+  const phone = document.getElementById("listingPhone").value;
+  const whatsapp = document.getElementById("listingWhatsapp").value;
+  const description = document.getElementById("listingDescription").value;
+  const imageFile = document.getElementById("listingImage").files[0];
+
+  if (!title || !category || !description) {
+    msg.innerText = "Заполните заголовок, категорию и описание";
+    return;
+  }
+
+  let imageUrl = "";
+
+  if (imageFile) {
+    const filePath = `${user.id}/${Date.now()}-${imageFile.name}`;
+
+    const uploadResult = await supabaseClient.storage
+      .from("listing-images")
+      .upload(filePath, imageFile);
+
+    if (uploadResult.error) {
+      msg.innerText = uploadResult.error.message;
+      return;
+    }
+
+    const publicUrlResult = supabaseClient.storage
+      .from("listing-images")
+      .getPublicUrl(filePath);
+
+    imageUrl = publicUrlResult.data.publicUrl;
+  }
+
+  const { data, error } = await supabaseClient
+    .from("listings")
+    .insert({
+      user_id: user.id,
+      title: title,
+      category: category,
+      price: price ? Number(price) : null,
+      currency: currency,
+      city: city,
+      phone: phone,
+      whatsapp: whatsapp,
+      description: description,
+      status: "active"
+    })
+    .select()
+    .single();
+
+  if (error) {
+    msg.innerText = error.message;
+    return;
+  }
+
+  if (imageUrl) {
+    await supabaseClient
+      .from("listings-images")
+      .insert({
+        listing_id: data.id,
+        image_url: imageUrl
+      });
+  }
+
+  msg.innerText = "Объявление опубликовано ✅";
+}
 </script>
 </body>
 </html>
