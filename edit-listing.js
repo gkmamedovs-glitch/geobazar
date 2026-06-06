@@ -82,3 +82,14 @@ async function vipListing() {
   await supabaseClient.from("listings").update({ vip_until: until, is_premium:true }).eq("id", id);
   alert("VIP включен на 7 дней (демо до оплаты)");
 }
+
+
+function renderCategoryFields() {
+  const category = document.getElementById("listingCategory")?.value || "";
+  const smartBox = document.getElementById("smartCategoryFields");
+  if (typeof renderSmartCategoryFields === "function") {
+    renderSmartCategoryFields(category);
+  } else if (smartBox) {
+    smartBox.innerHTML = "";
+  }
+}

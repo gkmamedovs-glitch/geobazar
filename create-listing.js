@@ -140,3 +140,21 @@ async function createListing() {
 
   setTimeout(() => location.href = "listing.html?id=" + data.id, 1000);
 }
+
+
+// GeoBazar fix: one clean category renderer.
+// Старые поля не показываем, чтобы не было дублей "Марка/Модель".
+// Все параметры теперь идут только из category-fields.js в smartCategoryFields.
+function renderCategoryFields() {
+  const category = document.getElementById("listingCategory")?.value || "";
+  const extraBox = document.getElementById("extraFields");
+  const smartBox = document.getElementById("smartCategoryFields");
+
+  if (extraBox) extraBox.innerHTML = "";
+
+  if (typeof renderSmartCategoryFields === "function") {
+    renderSmartCategoryFields(category);
+  } else if (smartBox) {
+    smartBox.innerHTML = "";
+  }
+}

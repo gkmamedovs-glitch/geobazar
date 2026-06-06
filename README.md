@@ -52,3 +52,8 @@ Smart category fields:
 - category-fields.js — умные поля по категориям
 - SMART_CATEGORY_FIELDS_SQL.sql — добавляет listings.parameters jsonb
 - create-listing/edit-listing сохраняют параметры в JSON
+
+
+Category fields fix:
+- убраны дубли параметров в авто/недвижимости
+- теперь марка/модель и другие параметры выводятся только один раз из category-fields.js
