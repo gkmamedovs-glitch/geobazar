@@ -250,7 +250,52 @@
       `);
     }
   }
+async function loadProfile() {
+  const { data: userData } = await supabaseClient.auth.getUser();
+  const user = userData.user;
 
+  if (!user) return;
+
+  document.getElementById("profileEmail").innerText = "Email: " + user.email;
+
+  const { data, error } = await supabaseClient
+    .from("profiles")
+    .select("*")
+    .eq("id", user.id)
+    .single();
+
+  if (data) {
+    document.getElementById("profileName").value = data.name || "";
+    document.getElementById("profilePhone").value = data.phone || "";
+    document.getElementById("profileWhatsapp").value = data.whatsapp || "";
+    document.getElementById("profileCity").value = data.city || "";
+    document.getElementById("profileType").value = data.account_type || "private";
+  }
+}
+
+async function saveProfile() {
+  const { data: userData } = await supabaseClient.auth.getUser();
+  const user = userData.user;
+  const msg = document.getElementById("profileMessage");
+
+  if (!user) {
+    msg.innerText = "Сначала войдите в аккаунт";
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from("profiles")
+    .update({
+      name: document.getElementById("profileName").value,
+      phone: document.getElementById("profilePhone").value,
+      whatsapp: document.getElementById("profileWhatsapp").value,
+      city: document.getElementById("profileCity").value,
+      account_type: document.getElementById("profileType").value
+    })
+    .eq("id", user.id);
+
+  msg.innerText = error ? error.message : "Профиль сохранён ✅";
+}
   checkUser();
 </script>
 </body>
