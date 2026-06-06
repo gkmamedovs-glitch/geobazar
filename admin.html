@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — GeoBazar</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script><script src="i18n.js"></script><script src="ui.js"></script><script src="auth.js"></script>
+</head><body><script>header();</script>
+<main><section class="panel"><h1>🔐 GeoBazar Admin</h1><div class="grid-4" id="adminStats"></div><hr><div class="grid-4"><a class="btn btn-light" href="admin-users.html">Пользователи</a><a class="btn btn-light" href="admin-companies.html">Компании</a><a class="btn btn-light" href="admin-listings.html">Объявления</a><a class="btn btn-light" href="admin-reports.html">Жалобы</a></div></section></main>
+<script>authModal();</script><script>footer();</script><script src="admin.js"></script><script>loadAdminDashboard();</script>
+</body></html>

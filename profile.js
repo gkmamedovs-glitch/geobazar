@@ -95,3 +95,30 @@ async function loadMyListings() {
     </div>
   `).join("");
 }
+
+
+async function loadMyListings() {
+  await requireAuth();
+
+  const { data, error } = await supabaseClient
+    .from("listings")
+    .select("*")
+    .or(`user_id.eq.${currentUser.id},created_by.eq.${currentUser.id}`)
+    .order("created_at", { ascending:false });
+
+  const box = document.getElementById("myListings");
+  if (!box) return;
+
+  if (error) { box.innerHTML = error.message; return; }
+  if (!data || !data.length) { box.innerHTML = "<p>Пока нет объявлений.</p>"; return; }
+
+  box.innerHTML = data.map(x => `
+    <div class="panel">
+      <b>${x.title}</b>
+      <p>${x.city || ""} · ${money(x.price, x.currency)}</p>
+      <p>Статус: ${x.status || "active"} · Просмотры: ${x.views_count || 0}</p>
+      <a class="btn btn-light" href="listing.html?id=${x.id}">Открыть</a>
+      <a class="btn btn-blue" href="edit-listing.html?id=${x.id}">✏️ Редактировать</a>
+    </div>
+  `).join("");
+}

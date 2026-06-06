@@ -31,8 +31,8 @@ async function loadListingDetail() {
         <p><b>Город:</b> ${data.city || ""}</p>
         <p style="white-space:pre-wrap">${data.description || ""}</p>
         ${shareButtons(data.title)}
-        <button class="btn btn-blue" onclick="alert('Чат подключим следующим этапом')">Написать продавцу</button>
-        <button class="btn btn-light" onclick="alert('Избранное подключим следующим этапом')">В избранное</button>
+        <button class="btn btn-blue" onclick="startConversation(data.id, data.user_id, data.company_id)">Написать продавцу</button>
+        <button class="btn btn-light" onclick="addFavorite(data.id)">В избранное</button>
       </div>
     </div>
   `;

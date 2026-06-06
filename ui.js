@@ -4,18 +4,21 @@ function header() {
     <header class="topbar">
       <a class="logo" href="index.html"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></a>
       <nav class="nav">
-        <a class="hide-mobile" href="categories.html">Категории</a>
-        <a class="hide-mobile" href="listings.html">Объявления</a>
-        <a class="hide-mobile" href="cargo.html">GeoCargo</a>
-        <a class="hide-mobile" href="tourism.html">GeoTravel</a><a class="hide-mobile" href="business.html">Бизнес</a><a class="hide-mobile" href="verification.html">Верификация</a><a class="hide-mobile" href="billing.html">Пакеты</a>
+        <a class="hide-mobile" href="categories.html">${tr("nav_categories")}</a>
+        <a class="hide-mobile" href="listings.html">${tr("nav_listings")}</a>
+        <a class="hide-mobile" href="cargo.html">${tr("nav_cargo")}</a>
+        <a class="hide-mobile" href="tourism.html">${tr("nav_travel")}</a>
+        <a class="hide-mobile" href="business.html">${tr("nav_business")}</a>
+        <a class="hide-mobile" href="verification.html">${tr("nav_verification")}</a>
+        <a class="hide-mobile" href="billing.html">${tr("nav_packages")}</a>
         <select class="lang-select" onchange="setLang(this.value)">
-          <option value="ru">RU</option>
-          <option value="ka">KA</option>
-          <option value="az">AZ</option>
-          <option value="am">AM</option>
-          <option value="en">EN</option>
+          <option value="ru" ${getLang()==="ru"?"selected":""}>RU</option>
+          <option value="ka" ${getLang()==="ka"?"selected":""}>KA</option>
+          <option value="az" ${getLang()==="az"?"selected":""}>AZ</option>
+          <option value="en" ${getLang()==="en"?"selected":""}>EN</option>
+          <option value="am" ${getLang()==="am"?"selected":""}>AM</option>
         </select>
-        <a class="btn btn-orange" href="create-listing.html">+ Подать объявление</a>
+        <a class="btn btn-orange" href="create-listing.html">${tr("nav_post")}</a>
         <span id="authNav"></span>
       </nav>
     </header>

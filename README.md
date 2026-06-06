@@ -15,3 +15,13 @@
 Verification build:
 - verification.html — заявка на верификацию
 - verification.js — загрузка документов в private bucket verification-documents
+
+
+MVP Frontend 1.0:
+- i18n.js — нормальный выбор языка RU/KA/AZ/EN/AM
+- favorites.html/js — избранное
+- messages.html, conversation.html, chat.js — чат
+- notifications.html/js — уведомления
+- reviews.html/js — отзывы
+- edit-listing.html/js — редактирование, архив, VIP, поднятие, статистика
+- admin.html + admin-* — первая админ-панель
