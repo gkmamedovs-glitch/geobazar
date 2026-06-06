@@ -1,2 +1,16 @@
-# geobazar
-GeoBazar.ge - Georgian marketplace platform
+# GeoBazar.ge static MVP
+
+Это стартовая версия сайта GeoBazar.ge для бесплатной публикации на Vercel, Netlify или GitHub Pages.
+
+Файлы:
+- index.html
+- styles.css
+
+Как запустить:
+1. Создай аккаунт на Vercel.com
+2. Создай GitHub аккаунт
+3. Загрузи эти файлы в новый репозиторий
+4. Подключи репозиторий к Vercel
+5. Подключи домен GeoBazar.ge через DNS
+
+Это статический сайт-заглушка/MVP. Реальные объявления, регистрация, база данных и чат добавляются следующим этапом через Supabase.
