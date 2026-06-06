@@ -66,6 +66,44 @@
 
   <p id="profileMessage"></p>
 </section>
+  <section id="create-listing" style="padding:30px; background:#fff; border-radius:18px; margin:30px 0;">
+  <h2>Подать объявление</h2>
+
+  <input id="listingTitle" placeholder="Заголовок" style="width:100%; padding:14px; margin:8px 0;">
+
+  <select id="listingCategory" style="width:100%; padding:14px; margin:8px 0;">
+    <option value="Авто">Авто</option>
+    <option value="Недвижимость">Недвижимость</option>
+    <option value="Работа">Работа</option>
+    <option value="Услуги">Услуги</option>
+    <option value="Электроника">Электроника</option>
+    <option value="Строительство">Строительство</option>
+    <option value="Грузоперевозки">Грузоперевозки</option>
+    <option value="Туризм">Туризм</option>
+  </select>
+
+  <input id="listingPrice" placeholder="Цена" type="number" style="width:100%; padding:14px; margin:8px 0;">
+
+  <select id="listingCurrency" style="width:100%; padding:14px; margin:8px 0;">
+    <option value="GEL">GEL</option>
+    <option value="USD">USD</option>
+    <option value="EUR">EUR</option>
+  </select>
+
+  <input id="listingCity" placeholder="Город" style="width:100%; padding:14px; margin:8px 0;">
+  <input id="listingPhone" placeholder="Телефон" style="width:100%; padding:14px; margin:8px 0;">
+  <input id="listingWhatsapp" placeholder="WhatsApp" style="width:100%; padding:14px; margin:8px 0;">
+
+  <textarea id="listingDescription" placeholder="Описание" style="width:100%; padding:14px; margin:8px 0; min-height:130px;"></textarea>
+
+  <input id="listingImage" type="file" accept="image/*" style="width:100%; padding:14px; margin:8px 0;">
+
+  <button onclick="createListing()" style="padding:14px 20px; background:#ff7a00; color:white; border:0; border-radius:12px;">
+    Опубликовать
+  </button>
+
+  <p id="listingMessage"></p>
+</section>
   <main>
     <section class="quick-actions" id="post">
       <div><b>Подать объявление</b><small>Бесплатно и быстро</small></div>
