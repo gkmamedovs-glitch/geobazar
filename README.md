@@ -10,3 +10,8 @@
 - create-listing.html — выбор публикации от частного лица или компании
 
 Загрузите все файлы в корень GitHub репозитория с заменой старых.
+
+
+Verification build:
+- verification.html — заявка на верификацию
+- verification.js — загрузка документов в private bucket verification-documents
