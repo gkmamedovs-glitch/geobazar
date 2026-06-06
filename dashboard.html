@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кабинет — GeoBazar</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script><script src="i18n.js"></script><script src="ui.js"></script><script src="auth.js"></script>
+</head>
+<body>
+<script>header();</script>
+<main>
+  <section class="dashboard">
+    <div class="panel side-menu">
+      <a class="btn btn-light" href="dashboard.html">🏠 Главная</a>
+      <a class="btn btn-light" href="profile.html">👤 Профиль</a>
+      <a class="btn btn-light" href="my-listings.html">📦 Мои объявления</a>
+      <a class="btn btn-light" href="favorites.html">❤️ Избранное</a>
+      <a class="btn btn-light" href="messages.html">💬 Сообщения</a>
+      <a class="btn btn-light" href="notifications.html">🔔 Уведомления</a>
+      <a class="btn btn-light" href="reviews.html">⭐ Отзывы</a>
+      <a class="btn btn-light" href="business.html">🏢 Компания</a>
+      <a class="btn btn-light" href="company-dashboard.html">📊 Кабинет компании</a>
+      <a class="btn btn-light" href="verification.html">✅ Верификация</a>
+      <a class="btn btn-light" href="billing.html">💳 Пакеты</a>
+      <button class="btn btn-danger" onclick="logoutUser()">🚪 Выйти</button>
+    </div>
+    <div class="panel">
+      <h1>Кабинет GeoBazar</h1>
+      <h2 id="dashboardUserName">...</h2>
+      <p id="dashboardUserEmail"></p>
+      <div class="grid-4" id="dashboardStats">Загрузка...</div>
+    </div>
+  </section>
+</main>
+<script>authModal();</script><script>footer();</script>
+<script src="dashboard.js"></script><script src="support.js"></script>
+<script>loadDashboard();</script>
+</body>
+</html>

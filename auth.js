@@ -13,7 +13,7 @@ function renderAuthNav() {
 
   if (currentUser) {
     navBox.innerHTML = `
-      <a class="btn btn-light" href="profile.html">👤 ${tr("cabinet")}</a>
+      <a class="btn btn-light" href="dashboard.html">👤 ${tr("cabinet")}</a>
       <button class="btn btn-danger" onclick="logoutUser()">${tr("logout")}</button>
     `;
   } else {

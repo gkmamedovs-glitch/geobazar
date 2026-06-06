@@ -25,3 +25,11 @@ MVP Frontend 1.0:
 - reviews.html/js — отзывы
 - edit-listing.html/js — редактирование, архив, VIP, поднятие, статистика
 - admin.html + admin-* — первая админ-панель
+
+
+Dashboard + Support + Payments build:
+- dashboard.html — личный кабинет пользователя
+- company-dashboard.html — кабинет компании
+- support.js — плавающая кнопка поддержки
+- billing.js — подготовка платежей
+- SUPABASE_NEXT_SQL.sql — SQL для support_tickets и payment_transactions
