@@ -45,7 +45,27 @@
       </div>
     </div>
   </section>
+<section id="profile" style="padding:30px; background:#fff; border-radius:18px; margin:30px 0;">
+  <h2>Мой профиль</h2>
 
+  <p id="profileEmail"></p>
+
+  <input id="profileName" placeholder="Имя" style="width:100%; padding:14px; margin:8px 0;">
+  <input id="profilePhone" placeholder="Телефон" style="width:100%; padding:14px; margin:8px 0;">
+  <input id="profileWhatsapp" placeholder="WhatsApp" style="width:100%; padding:14px; margin:8px 0;">
+  <input id="profileCity" placeholder="Город" style="width:100%; padding:14px; margin:8px 0;">
+
+  <select id="profileType" style="width:100%; padding:14px; margin:8px 0;">
+    <option value="private">Частное лицо</option>
+    <option value="company">Компания</option>
+  </select>
+
+  <button onclick="saveProfile()" style="padding:14px 20px; background:#0057B8; color:white; border:0; border-radius:12px;">
+    Сохранить профиль
+  </button>
+
+  <p id="profileMessage"></p>
+</section>
   <main>
     <section class="quick-actions" id="post">
       <div><b>Подать объявление</b><small>Бесплатно и быстро</small></div>
