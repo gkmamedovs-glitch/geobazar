@@ -143,5 +143,86 @@
     <p>© 2026 GeoBazar.ge — Вся Грузия в одном месте.</p>
     <p>info@geobazar.ge · support@geobazar.ge</p>
   </footer>
+  <!-- Supabase Auth -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<div id="authModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:white; color:#111; padding:25px; border-radius:18px; width:90%; max-width:420px;">
+    <h2 id="authTitle">Вход</h2>
+
+    <input id="authEmail" type="email" placeholder="Email" style="width:100%; padding:14px; margin:10px 0; border-radius:10px; border:1px solid #ccc;">
+    <input id="authPassword" type="password" placeholder="Пароль" style="width:100%; padding:14px; margin:10px 0; border-radius:10px; border:1px solid #ccc;">
+
+    <button onclick="submitAuth()" style="width:100%; padding:14px; background:#f47b20; color:white; border:0; border-radius:12px; font-weight:bold;">Продолжить</button>
+    <button onclick="closeAuth()" style="width:100%; padding:12px; margin-top:10px; background:#eee; border:0; border-radius:12px;">Закрыть</button>
+
+    <p id="authMessage" style="margin-top:12px;"></p>
+  </div>
+</div>
+
+<script>
+  const SUPABASE_URL = "https://hexatytkkerqhtsukozp.supabase.co";
+  const SUPABASE_KEY = "ВСТАВЬ_СЮДА_PUBLISHABLE_KEY";
+
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  let authMode = "login";
+
+  function openAuth(mode) {
+    authMode = mode;
+    document.getElementById("authTitle").innerText = mode === "register" ? "Регистрация" : "Вход";
+    document.getElementById("authModal").style.display = "flex";
+  }
+
+  function closeAuth() {
+    document.getElementById("authModal").style.display = "none";
+  }
+
+  async function submitAuth() {
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
+    const msg = document.getElementById("authMessage");
+
+    if (!email || !password) {
+      msg.innerText = "Введите email и пароль";
+      return;
+    }
+
+    let result;
+
+    if (authMode === "register") {
+      result = await supabaseClient.auth.signUp({ email, password });
+      msg.innerText = result.error ? result.error.message : "Регистрация создана. Проверьте email.";
+    } else {
+      result = await supabaseClient.auth.signInWithPassword({ email, password });
+      msg.innerText = result.error ? result.error.message : "Вы вошли в аккаунт.";
+      if (!result.error) closeAuth();
+    }
+  }
+
+  async function logoutUser() {
+    await supabaseClient.auth.signOut();
+    location.reload();
+  }
+
+  async function checkUser() {
+    const { data } = await supabaseClient.auth.getUser();
+    const nav = document.querySelector("nav") || document.querySelector("header");
+
+    if (!nav) return;
+
+    if (data.user) {
+      nav.insertAdjacentHTML("beforeend", `
+        <button onclick="logoutUser()" style="margin-left:10px;">Выйти</button>
+      `);
+    } else {
+      nav.insertAdjacentHTML("beforeend", `
+        <button onclick="openAuth('login')" style="margin-left:10px;">Войти</button>
+        <button onclick="openAuth('register')" style="margin-left:10px;">Регистрация</button>
+      `);
+    }
+  }
+
+  checkUser();
+</script>
 </body>
 </html>
