@@ -65,3 +65,10 @@ Final web pack:
 - reports.js — жалобы
 - robots.txt + sitemap.xml — SEO подготовка
 - analytics.js — заготовка аналитики
+
+
+Admin + Reviews + Ratings pack:
+- ADMIN_REVIEWS_SQL.sql — дополнительные поля рейтинга и политики
+- admin-tools.js — логика админки
+- admin.html/admin-users/admin-companies/admin-listings/admin-reports/admin-verification
+- reviews.js/html обновлены: рейтинг, подсчёт отзывов

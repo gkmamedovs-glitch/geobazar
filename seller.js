@@ -20,7 +20,7 @@ async function loadSellerProfile() {
           <h1>${p.name || 'Пользователь GeoBazar'}</h1>
           <p>${p.verification_status === "approved" ? "🟢 Проверенный пользователь" : "⚪ Не верифицирован"}</p>
           <p>Город: ${p.city || ""}</p>
-          <p>Рейтинг: ⭐ ${rating}</p>
+          <p>Рейтинг: ⭐ ${p.rating_avg || rating} (${p.reviews_count || r.length} отзывов)</p>
           <p>Объявлений: ${(listings.data || []).length}</p>
         </div>
         <div>
