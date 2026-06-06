@@ -11,11 +11,20 @@
   <header class="topbar">
     <div class="logo"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></div>
     <nav>
-      <a href="#categories">Категории</a>
-      <a href="#vip">VIP</a>
-      <a href="#services">Сервисы</a>
-      <a href="#post" class="post-btn">+ Подать объявление</a>
-    </nav>
+  <a href="#categories">Категории</a>
+  <a href="#vip">VIP</a>
+  <a href="#services">Сервисы</a>
+
+  <button onclick="openAuth('login')" style="padding:8px 14px;border-radius:8px;border:none;cursor:pointer;">
+    Войти
+  </button>
+
+  <button onclick="openAuth('register')" style="padding:8px 14px;border-radius:8px;border:none;cursor:pointer;">
+    Регистрация
+  </button>
+
+  <a href="#post" class="post-btn">+ Подать объявление</a>
+</nav>
   </header>
 
   <section class="hero">
@@ -162,7 +171,7 @@
 
 <script>
   const SUPABASE_URL = "https://hexatytkkerqhtsukozp.supabase.co";
-  const SUPABASE_KEY = "ВСТАВЬ_СЮДА_PUBLISHABLE_KEY";
+  const SUPABASE_KEY = "sb_publishable_Rs28uZ0iGl0YLrJm8yfxoA_Ba2sRgHC";
 
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   let authMode = "login";
