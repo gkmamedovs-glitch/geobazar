@@ -84,3 +84,10 @@ Premium UI Fixed:
 - premium-home.css affects only index.html
 - global premium.css removed
 - old system pages kept stable
+
+
+Launch Demo Pack:
+- stable premium homepage
+- AI placeholder button added to all pages
+- launch checklist added
+- OpenAI disabled until API key/budget is ready
