@@ -91,3 +91,5 @@ Launch Demo Pack:
 - AI placeholder button added to all pages
 - launch checklist added
 - OpenAI disabled until API key/budget is ready
+
+Full Premium All Pages: key pages replaced with one premium design system.
