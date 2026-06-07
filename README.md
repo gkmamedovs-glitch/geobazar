@@ -80,9 +80,7 @@ Payment UI Pack:
 - payments.js — создание заявок на оплату
 - edit-listing интегрирован с VIP/Boost платежами
 
-
-Premium UI 10/10:
-- premium.css — новый современный стиль
-- index.html — премиальная главная страница как в макете
-- premium-ui.js — поиск с главной
-- раздел тендеров убран из главной
+Premium UI Fixed:
+- premium-home.css affects only index.html
+- global premium.css removed
+- old system pages kept stable
