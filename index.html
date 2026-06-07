@@ -3,84 +3,154 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GeoBazar.ge — Главная</title>
+  <title>GeoBazar.ge — объявления по всей Грузии</title>
+  <meta name="description" content="GeoBazar.ge — покупай, продавай и находи услуги по всей Грузии. Авто, недвижимость, работа, услуги, грузы и путешествия.">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="i18n.js"></script>
-  <script src="ui.js"></script>
-  <script src="auth.js"></script>
+  <script src="config.js"></script><script src="i18n.js"></script><script src="ui.js"></script><script src="auth.js"></script>
 </head>
 <body>
-  <script>header();</script>
-  
-<section class="hero">
+<script>header();</script>
+
+<section class="hero-premium">
   <div class="hero-inner">
-    <h1>Покупай, продавай, находи услуги по всей Грузии</h1>
-    <p>GeoBazar — маркетплейс объявлений, услуг, бизнеса, грузоперевозок и туризма.</p>
-    <div class="search-box">
-      <select id="searchCategory"><option value="">Все категории</option></select>
-      <input id="searchText" placeholder="Что ищете?">
-      <select id="searchCity"><option value="">Вся Грузия</option></select>
-      <button class="btn btn-blue" onclick="goSearch()">Найти</button>
+    <div class="lang-row">
+      <span>🇬🇪 ქართული</span>
+      <span>🇷🇺 Русский</span>
+      <span>🇦🇿 Azərbaycanca</span>
+      <span>🇦🇲 Հայերեն</span>
+      <span>🇬🇧 English</span>
     </div>
-    <div class="stats"><span>Бесплатный старт</span> · <span>Профили продавцов</span> · <span>5 языков</span></div>
+    <h1 class="hero-title">Покупай, продавай, находи услуги по всей Грузии</h1>
+    <p class="hero-subtitle">Вся Грузия в одном месте</p>
+
+    <div class="hero-search">
+      <select id="homeSearchCategory">
+        <option value="">Все категории</option>
+        <option>Авто</option>
+        <option>Автозапчасти</option>
+        <option>Недвижимость</option>
+        <option>Работа</option>
+        <option>Услуги</option>
+        <option>Электроника</option>
+        <option>Животные</option>
+        <option>Грузоперевозки</option>
+        <option>Туризм</option>
+      </select>
+      <input id="homeSearchQ" placeholder="Я ищу...">
+      <select id="homeSearchRegion">
+        <option value="">Вся Грузия</option>
+      </select>
+      <button class="btn btn-blue" onclick="goHomeSearch()">Найти</button>
+    </div>
   </div>
 </section>
 
+<div class="quick-actions">
+  <a class="quick-action" href="create-listing.html"><span class="ico">➕</span><span><b>Подать объявление</b><small>Бесплатно и быстро</small></span></a>
+  <a class="quick-action" href="business.html"><span class="ico">🏪</span><span><b>Стать продавцом</b><small>Увеличьте продажи</small></span></a>
+  <a class="quick-action" href="company-dashboard.html"><span class="ico">💼</span><span><b>Для бизнеса</b><small>Ваш магазин на GeoBazar</small></span></a>
+  <a class="quick-action" href="cargo.html"><span class="ico">🚚</span><span><b>Для перевозчиков</b><small>Грузы и транспорт</small></span></a>
+  <a class="quick-action" href="categories.html"><span class="ico">🛠️</span><span><b>Для мастеров</b><small>Найдите клиентов</small></span></a>
+</div>
+
 <main>
-  <section class="grid-5 quick-actions">
-    <a class="quick-card" href="create-listing.html"><b>Подать объявление</b><small>Бесплатно и быстро</small></a>
-    <a class="quick-card" href="profile.html"><b>Стать продавцом</b><small>Заполните профиль</small></a>
-    <a class="quick-card" href="listings.html?category=Бизнес"><b>Для бизнеса</b><small>Компании и оборудование</small></a>
-    <a class="quick-card" href="cargo.html"><b>Для перевозчиков</b><small>Грузы и транспорт</small></a>
-    <a class="quick-card" href="listings.html?category=Услуги"><b>Для мастеров</b><small>Найдите клиентов</small></a>
+  <section class="section">
+    <div class="category-grid">
+      <a class="cat-card" href="listings.html?category=Авто"><span class="ico">🚗</span><span>Авто</span></a>
+      <a class="cat-card" href="listings.html?category=Недвижимость"><span class="ico">🏠</span><span>Недвижимость</span></a>
+      <a class="cat-card" href="listings.html?category=Работа"><span class="ico">💼</span><span>Работа</span></a>
+      <a class="cat-card" href="listings.html?category=Услуги"><span class="ico">🛠️</span><span>Услуги</span></a>
+      <a class="cat-card" href="listings.html?category=Электроника"><span class="ico">📱</span><span>Электроника</span></a>
+      <a class="cat-card" href="listings.html?category=Дом и сад"><span class="ico">🛋️</span><span>Дом и сад</span></a>
+      <a class="cat-card" href="listings.html?category=Строительство"><span class="ico">🏗️</span><span>Строительство</span></a>
+      <a class="cat-card" href="listings.html?category=Сельхозтехника"><span class="ico">🚜</span><span>Сельхозтехника</span></a>
+      <a class="cat-card" href="listings.html?category=Животные"><span class="ico">🐾</span><span>Животные</span></a>
+      <a class="cat-card" href="listings.html?category=Бизнес"><span class="ico">📊</span><span>Бизнес</span></a>
+      <a class="cat-card" href="listings.html?category=Одежда"><span class="ico">👕</span><span>Одежда</span></a>
+      <a class="cat-card" href="listings.html?category=Детский мир"><span class="ico">🛒</span><span>Детский мир</span></a>
+      <a class="cat-card" href="tourism.html"><span class="ico">✈️</span><span>Туризм</span></a>
+      <a class="cat-card" href="listings.html?category=Автозапчасти"><span class="ico">⚙️</span><span>Автозапчасти</span></a>
+      <a class="cat-card" href="listings.html?category=Красота"><span class="ico">✂️</span><span>Красота</span></a>
+      <a class="cat-card" href="listings.html?category=Спорт"><span class="ico">⚽</span><span>Спорт</span></a>
+      <a class="cat-card" href="listings.html?category=Музыка"><span class="ico">🎸</span><span>Музыка</span></a>
+      <a class="cat-card" href="listings.html?category=Книги"><span class="ico">📘</span><span>Книги</span></a>
+      <a class="cat-card" href="listings.html?category=Еда"><span class="ico">☕</span><span>Еда и напитки</span></a>
+      <a class="cat-card" href="categories.html"><span class="ico">•••</span><span>Другое</span></a>
+    </div>
   </section>
+
+  <div class="layout-2">
+    <div>
+      <section class="section">
+        <div class="section-head"><h2>👑 VIP объявления</h2><a href="listings.html?vip=1">Смотреть все</a></div>
+        <div class="cards">
+          <article class="card"><img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1200&auto=format&fit=crop"><span class="badge">VIP</span><span class="heart">♡</span><h3>Mercedes-Benz GLE 2020</h3><p>Тбилиси</p><b>95 000 GEL</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1200&auto=format&fit=crop"><span class="badge">VIP</span><span class="heart">♡</span><h3>Сдаётся 2-комн. квартира</h3><p>Батуми</p><b>1 200 GEL / мес</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?q=80&w=1200&auto=format&fit=crop"><span class="badge">VIP</span><span class="heart">♡</span><h3>iPhone 14 Pro 256GB</h3><p>Рустави</p><b>2 350 GEL</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop"><span class="badge">VIP</span><span class="heart">♡</span><h3>Продаётся дом в Кутаиси</h3><p>Кутаиси</p><b>250 000 GEL</b></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>Новые объявления</h2><a href="listings.html">Смотреть все</a></div>
+        <div class="cards">
+          <article class="card"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop"><span class="new">Новое</span><h3>Экскаватор Hyundai 210</h3><p>Тбилиси</p><b>210 000 GEL</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop"><span class="new">Новое</span><h3>Диван в отличном состоянии</h3><p>Рустави</p><b>350 GEL</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop"><span class="new">Новое</span><h3>Требуется сварщик</h3><p>Батуми</p><b>Договорная</b></article>
+          <article class="card"><img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1200&auto=format&fit=crop"><span class="new">Новое</span><h3>Кухонный гарнитур</h3><p>Марнеули</p><b>1 200 GEL</b></article>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="side-card">
+        <div class="section-head"><h2>Проверенные продавцы</h2><a href="listings.html">Все</a></div>
+        <div class="seller-row"><span><b>Auto Market ✅</b><br><small>Тбилиси</small></span><b>4.9 ⭐</b></div>
+        <div class="seller-row"><span><b>House Georgia ✅</b><br><small>Батуми</small></span><b>4.8 ⭐</b></div>
+        <div class="seller-row"><span><b>Tech Store ✅</b><br><small>Тбилиси</small></span><b>4.9 ⭐</b></div>
+        <div class="seller-row"><span><b>Good Furniture ✅</b><br><small>Кутаиси</small></span><b>4.7 ⭐</b></div>
+      </div>
+
+      <div class="promo">
+        <h2>Поднимите своё объявление</h2>
+        <p>Больше просмотров и быстрая продажа</p>
+        <a class="btn btn-light" href="payments.html">Поднять</a>
+      </div>
+
+      <div class="side-card">
+        <div class="section-head"><h2>Популярные категории</h2><a href="categories.html">Все</a></div>
+        <div class="seller-row"><span>Автомобили</span><b>12 540</b></div>
+        <div class="seller-row"><span>Недвижимость</span><b>8 732</b></div>
+        <div class="seller-row"><span>Услуги</span><b>6 215</b></div>
+        <div class="seller-row"><span>Работа</span><b>4 398</b></div>
+        <div class="seller-row"><span>Электроника</span><b>3 245</b></div>
+      </div>
+    </aside>
+  </div>
 
   <section class="section">
-    <div class="section-head"><h2>Категории</h2><a href="categories.html">Все категории</a></div>
-    <div class="grid-6" id="categoryGrid"></div>
-  </section>
-
-  <section class="section">
-    <div class="section-head"><h2>Новые объявления</h2><a href="listings.html">Смотреть все</a></div>
-    <div class="grid-4" id="homeListings"></div>
-  </section>
-
-  <section class="grid-4 section">
-    <a class="card service cargo" href="cargo.html"><h3>GeoCargo</h3><p>Грузоперевозки по Грузии</p></a>
-    <a class="card service jobs" href="listings.html?category=Работа"><h3>GeoJobs</h3><p>Вакансии и работники</p></a>
-    <a class="card service travel" href="tourism.html"><h3>GeoTravel</h3><p>Туры, eSIM, трансферы</p></a>
-    <a class="card service master" href="listings.html?category=Услуги"><h3>GeoServices</h3><p>Проверенные мастера</p></a>
+    <div class="grid-4">
+      <div class="quick-action"><span class="ico">🛡️</span><span><b>Безопасные сделки</b><small>Проверенные продавцы и защита покупателей</small></span></div>
+      <div class="quick-action"><span class="ico">🔎</span><span><b>Удобный поиск</b><small>Фильтры и умный поиск по всей Грузии</small></span></div>
+      <div class="quick-action"><span class="ico">🌐</span><span><b>Многоязычный сервис</b><small>5 языков для вашего удобства</small></span></div>
+      <div class="quick-action"><span class="ico">📱</span><span><b>Мобильное приложение</b><small>Готовим iOS и Android</small></span></div>
+    </div>
   </section>
 </main>
 
-  <script>authModal();</script>
-  <script>footer();</script>
-  
-<script src="listings.js"></script>
-<script>
-  CATEGORIES.forEach(c => document.getElementById("searchCategory").innerHTML += `<option value="${c.ru}">${catName(c)}</option>`);
-  CITIES.forEach(c => document.getElementById("searchCity").innerHTML += `<option>${c}</option>`);
-  renderCategoryGrid("categoryGrid");
-  renderListings("homeListings");
+<footer class="footer">
+  <div class="footer-inner">
+    <div><div class="logo"><span class="logo-dot">G</span><b>GeoBazar<span>.ge</span></b></div><p>Покупай, продавай, находи услуги по всей Грузии</p></div>
+    <div><h3>О нас</h3><p>О компании</p><p>Правила</p><p>Блог</p><p>Контакты</p></div>
+    <div><h3>Помощь</h3><p>Частые вопросы</p><p>Безопасность</p><p>Как подать объявление</p><p>Поддержка</p></div>
+    <div><h3>Для бизнеса</h3><p>Магазины</p><p>Реклама</p><p>Партнёрская программа</p></div>
+    <div><h3>Скачать приложение</h3><p>App Store</p><p>Google Play</p></div>
+  </div>
+</footer>
 
-  function goSearch() {
-    const c = document.getElementById("searchCategory").value;
-    const city = document.getElementById("searchCity").value;
-    location.href = `listings.html?category=${encodeURIComponent(c)}&city=${encodeURIComponent(city)}`;
-  }
-</script>
-
-<script src="support.js"></script>
-
-<script>
-function goHomeSearch(){
-  const input = document.querySelector(".search-box input");
-  const q = input ? input.value : "";
-  location.href = "listings.html?q=" + encodeURIComponent(q);
-}
-document.querySelectorAll(".search-box button").forEach(b => b.onclick = goHomeSearch);
-</script>
+<script>authModal();</script>
+<script src="locations.js"></script><script src="premium-ui.js"></script><script src="support.js"></script>
+<script>loadRegions("homeSearchRegion");</script>
 </body>
 </html>
