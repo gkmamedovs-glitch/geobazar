@@ -11,3 +11,11 @@ main{max-width:1380px;margin:0 auto;padding:28px}.panel,.section,.gb-card{backgr
 .chat-layout{display:grid;grid-template-columns:330px 1fr;gap:20px}.chat-list{background:#f7f9fd;border-radius:22px;padding:12px}.chat-item{background:white;border:1px solid var(--border);border-radius:18px;padding:14px;margin-bottom:10px}.chat-window{background:white;border:1px solid var(--border);border-radius:22px;padding:18px;min-height:540px}.msg{max-width:70%;padding:12px 14px;border-radius:18px;margin-bottom:10px;background:#f1f5fb}.msg.me{margin-left:auto;background:#e8f1ff}.map-placeholder{height:560px;border-radius:24px;background:linear-gradient(135deg,#dcecff,#f7fbff);display:flex;align-items:center;justify-content:center;color:#0757d8;font-weight:950;font-size:30px;border:1px solid var(--border)}
 .modal{display:none;position:fixed;inset:0;background:rgba(7,22,51,.58);z-index:9999;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-card{background:white;border-radius:24px;padding:26px;max-width:460px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.28)}
 @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.gb-layout,.dashboard,.chat-layout{grid-template-columns:1fr}.kanban{grid-template-columns:1fr 1fr}.gb-search-panel{grid-template-columns:1fr 1fr}}@media(max-width:720px){main{padding:14px}.hide-mobile{display:none!important}.grid-4,.grid-3,.grid-2,.form-grid,.kanban{grid-template-columns:1fr}.gb-search-panel{grid-template-columns:1fr}.gb-hero-mini h1{font-size:34px}}
+
+/* GeoBazar clean home fix */
+.home-lang{display:none!important}
+.home-hero-inner{padding-top:64px}
+.home-categories{grid-template-columns:repeat(9,1fr)!important}
+.home-category{min-height:118px}
+@media(max-width:1100px){.home-categories{grid-template-columns:repeat(3,1fr)!important}}
+@media(max-width:720px){.home-categories{grid-template-columns:repeat(2,1fr)!important}}

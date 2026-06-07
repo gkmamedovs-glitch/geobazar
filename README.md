@@ -93,3 +93,9 @@ Launch Demo Pack:
 - OpenAI disabled until API key/budget is ready
 
 Full Premium All Pages: key pages replaced with one premium design system.
+
+Clean Home Fix:
+- Removed language flags from hero area.
+- Left language only in top header selector.
+- Reduced home categories to popular ones only.
+- Added All categories button for the rest.
